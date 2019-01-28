@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionManifest Version="5.0" ExtensionBundleId="Griddify" ExtensionBundleVersion="1.1.0"
+		ExtensionBundleName="Griddify" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<ExtensionList>
+		<Extension Id="Griddify" Version="1.1.0" />
+	</ExtensionList>
+	<ExecutionEnvironment>
+		<HostList>
+            <!-- Photoshop -->
+            <Host Name="PHXS" Version="[14.0,99.9]" />
+            <Host Name="PHSP" Version="[14.0,99.9]" />
+
+		</HostList>
+		<LocaleList>
+			<Locale Code="All" />
+		</LocaleList>
+		<RequiredRuntimeList>
+			<RequiredRuntime Name="CSXS" Version="4.0" />
+		</RequiredRuntimeList>
+	</ExecutionEnvironment>
+	<DispatchInfoList>
+		<Extension Id="Griddify">
+			<DispatchInfo >
+				<Resources>
+				<MainPath>./panel.html</MainPath>
+				<ScriptPath>./dist/commands.dist.js</ScriptPath>
+				</Resources>
+				<Lifecycle>
+					<AutoVisible>true</AutoVisible>
+				</Lifecycle>
+				<UI>
+					<Type>Panel</Type>
+					<Menu>Griddify</Menu>
+					<Geometry>
+						<Size>
+							<Height>128</Height>
+							<Width>247</Width>
+						</Size>
+
+						<MinSize>
+							<Height>128</Height>
+							<Width>247</Width>
+						</MinSize>
+					</Geometry>
+				</UI>
+			</DispatchInfo>
+		</Extension>
+	</DispatchInfoList>
+</ExtensionManifest>

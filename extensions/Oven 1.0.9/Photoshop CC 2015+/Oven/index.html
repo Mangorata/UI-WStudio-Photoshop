@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="copyright" content="2014, Lorenzo Buosi, chrometaphore.com" />  
+    <title>Oven</title>
+
+    <!-- stylesheets -->
+    <link type="text/css" rel="stylesheet" href="style/main.css" />
+    <link type="text/css" rel="stylesheet" href="style/theme_dark.css" />
+    <link type="text/css" rel="stylesheet" href="style/views.css" />
+
+    <!-- js -->
+    <script src="./ext.js"></script>
+    <script src="./lib/CSInterface-4.0.0.js"></script>
+    <script src="scripts/main.js"></script>
+    <script>
+
+    </script>
+</head>
+
+<body onLoad="onLoaded()">
+<body>
+    <div id="UI">
+
+    	<!-- iOS / Android switch -->
+    	<div class="row">
+            <div class="content">
+		    	<div id="switch_os_component" class="hSwitchBlock">
+		            <div class="l on" id="ios_lbl">iOS</div>
+		            <div class="hswitch l" id="switch_os" onclick="switchOS()">
+		                <div class="handle"></div>
+		            </div>
+		            <div class="r off" id="android_lbl">Android</div>
+		        </div> 
+        	</div>
+        </div>
+
+        <!-- settings -->
+        <div class="row" id="settings">
+
+            <!-- iOS -->
+            <div class="content show" id="iosSettings">
+
+                <!-- document resolution -->
+                <div class="row">
+                    <div class="lbl">
+                        <p>Document resolution</p>
+                    </div>
+                    <div class="selector">
+                        <div class="prev" onclick="setCurrentDensity('iOS', this)">
+                            <img src="assets/arrow_l.png" alt="prev" />
+                        </div>
+                        <div class="label">
+                            <p id="current_density_ios">1x</p>
+                        </div>
+                        <div class="next" onclick="setCurrentDensity('iOS', this)">
+                            <img src="assets/arrow_r.png" alt="next" />
+                        </div>
+                    </div> 
+                </div>
+                
+                <div class="row hr"></div> 
+
+                <!-- duplicate_layers -->
+                <div class="row">
+                    <div class="lbl">
+                        <p>Duplicate layers</p>
+                    </div>
+                    <div class="switch on" id="duplicate_layers_ios" onclick="switchTargetValue(this)">
+                        <div class="handle"></div>
+                    </div>
+                </div> 
+                
+                <div class="row hr"></div> 
+
+                <!-- output -->
+                <div class="row">
+                    <div class="lbl">
+                        <p>Output @</p>
+                    </div>
+                    <div id="output_density_ios">
+                        <div class="switchBtn rxgutter on" id="density_@1x" onclick="switchTargetValue(this)">
+		                    <p>1x</p>
+		                </div>
+		                <div class="switchBtn rxgutter on" id="density_@2x" onclick="switchTargetValue(this)">
+		                    <p>2x</p>
+		                </div>
+		                <div class="switchBtn off" id="density_@3x" onclick="switchTargetValue(this)">
+		                    <p>3x</p>
+		                </div>
+                    </div>
+                </div> 
+
+                <div class="row hr"></div> 
+
+                <!-- output file type-->
+                <div class="row">
+                    <div class="lbl">
+                        <p>Output file type</p>
+                    </div>
+                    <div class="selector">
+                        <div class="prev" onclick="setOutputFileType('iOS', this)">
+                            <img src="assets/arrow_l.png" alt="prev" />
+                        </div>
+                        <div class="label">
+                            <p id="ios_output_file_type">png</p>
+                        </div>
+                        <div class="next" onclick="setOutputFileType('iOS', this)">
+                            <img src="assets/arrow_r.png" alt="next" />
+                        </div>
+                    </div> 
+                </div>
+
+            </div>
+            <!-- Android -->
+            <div class="content hide" id="androidSettings">
+
+                <!-- document resolution -->
+                <div class="row">
+                    <div class="lbl">
+                        <p>Document resolution</p>
+                    </div>
+                    <div class="selector disabled">
+                        <div class="prev" onclick="setCurrentDensity('android', this)">
+                            <img src="assets/arrow_l.png" alt="prev" />
+                        </div>
+                        <div class="label">
+                            <p id="current_density_android">M</p>
+                        </div>
+                        <div class="next" onclick="setCurrentDensity('android', this)">
+                            <img src="assets/arrow_r.png" alt="next" />
+                        </div>
+                    </div> 
+                </div>
+                
+                <div class="row hr"></div> 
+
+                <!-- duplicate_layers -->
+                <div class="row">
+                    <div class="lbl">
+                        <p>Duplicate layers</p>
+                    </div>
+                    <div class="switch on" id="duplicate_layers_android" onclick="switchTargetValue(this)">
+                        <div class="handle"></div>
+                    </div>
+                </div> 
+                
+                <div class="row hr"></div> 
+
+                <!-- output -->
+                <div class="row">
+                    <div class="lbl">
+                        <p>DPI Output</p>
+                    </div>
+                    <div id="output_density_android">
+                        <div class="switchBtn rxgutter off" id="density_l" onclick="switchTargetValue(this)">
+                            <p>L</p>
+                        </div>
+                        <div class="switchBtn rxgutter on" id="density_m" onclick="switchTargetValue(this)">
+                            <p>M</p>
+                        </div>
+                        <div class="switchBtn rxgutter on" id="density_h" onclick="switchTargetValue(this)">
+                            <p>H</p>
+                        </div>
+                        <div class="switchBtn rxgutter on" id="density_x" onclick="switchTargetValue(this)">
+                            <p>X</p>
+                        </div>
+                        <div class="switchBtn off" id="density_xx" onclick="switchTargetValue(this)">
+                            <p>XX</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row hr"></div> 
+
+                <!-- output file type-->
+                <div class="row">
+                    <div class="lbl">
+                        <p>Output file type</p>
+                    </div>
+                    <div class="selector enabled">
+                        <div class="prev" onclick="setOutputFileType('android', this)">
+                            <img src="assets/arrow_l.png" alt="prev" />
+                        </div>
+                        <div class="label">
+                            <p id="android_output_file_type">png</p>
+                        </div>
+                        <div class="next" onclick="setOutputFileType('android', this)">
+                            <img src="assets/arrow_r.png" alt="next" />
+                        </div>
+                    </div> 
+                </div> 
+
+            </div>
+            <!-- [End] Android -->
+        </div>
+        <!-- [End] Settings -->
+
+    	<!-- Main button -->
+        <div class="row">
+            <div class="content">
+                <div id="main_btn" onclick="jsxcall_oven()" title="Bake selected layers">
+                    <div id="btn">
+                        <img id="main_icon" src="assets/oven_btn_icon_default.png" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

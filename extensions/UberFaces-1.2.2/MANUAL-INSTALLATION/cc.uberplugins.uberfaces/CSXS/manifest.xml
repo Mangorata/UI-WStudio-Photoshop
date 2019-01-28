@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ExtensionManifest ExtensionBundleId="cc.uberplugins.uberfaces" ExtensionBundleName="UberFaces" ExtensionBundleVersion="1.2.2" Version="4.0">
+  <Author>Anton Lyubushkin [nvkzNemo]</Author> 
+  <Contact mailto="nvkz.nemo@gmail.com" />
+  <Abstract>
+<![CDATA[
+Free Photoshop extension for generate random users
+]]>
+  </Abstract>
+  <ExtensionList>
+    <Extension Id="cc.uberplugins.uberfaces" Version="1.2.2"/>
+  </ExtensionList>
+  <ExecutionEnvironment>
+    <HostList>
+      <Host Name="PHSP" Version="14.0"/>
+      <Host Name="PHXS" Version="14.0"/>
+    </HostList>
+    <LocaleList>
+      <Locale Code="All"/>
+    </LocaleList>
+    <RequiredRuntimeList>
+      <RequiredRuntime Name="CSXS" Version="4.0"/>
+    </RequiredRuntimeList>
+  </ExecutionEnvironment>
+  <DispatchInfoList>
+    <Extension Id="cc.uberplugins.uberfaces">
+      <DispatchInfo>
+        <Resources>
+          <MainPath>./index.html</MainPath>
+          <ScriptPath>./host/main.jsx</ScriptPath>
+        </Resources>
+        <UI>
+          <Type>Panel</Type>
+          <Menu>UberFaces</Menu>
+          <Geometry>
+            <Size>
+              <Height>290</Height>
+              <Width>190</Width>
+            </Size>
+            <MinSize>
+                <Height>290</Height>
+                <Width>190</Width>
+            </MinSize>
+            <MaxSize>
+                <Height>9999</Height>
+                <Width>9999</Width>
+            </MaxSize>
+          </Geometry>
+          <Icons>
+            <Icon Type="Normal">./normal.png</Icon>
+            <Icon Type="DarkNormal">./darknormal.png</Icon> 
+          </Icons>
+        </UI>
+      </DispatchInfo>
+    </Extension>
+  </DispatchInfoList>
+</ExtensionManifest>

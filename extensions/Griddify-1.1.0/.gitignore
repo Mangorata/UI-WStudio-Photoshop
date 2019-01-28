@@ -1,0 +1,5 @@
+.htaccess
+*.log
+/node_modules
+/dist
+/builds

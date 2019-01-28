@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ExtensionManifest ExtensionBundleId="cc.uberplugins.ubermapper" ExtensionBundleName="UberMapper" ExtensionBundleVersion="0.4.6" Version="4.0">
+    <Author>Anton Lyubushkin [nvkzNemo]</Author> 
+    <Contact mailto="nvkz.nemo@gmail.com" />
+    <Abstract>
+<![CDATA[
+UberMapper will help you to place map into your Photoshop document
+]]>
+    </Abstract>
+    <ExtensionList>
+        <Extension Id="cc.uberplugins.ubermapper" Version="0.4.6"/>
+    </ExtensionList>
+    <ExecutionEnvironment>
+        <HostList>
+            <!-- Photoshop -->
+            <Host Name="PHSP" Version="14.0"/>
+            <Host Name="PHXS" Version="14.0"/>
+            <!-- Illustrator -->
+            <!-- <Host Name="ILST" Version="[18.0,99.9]" />-->
+            <!-- InDesign -->
+            <!-- <Host Name="IDSN" Version="[10.0,99.9]" /> -->          
+            <!-- Premiere -->
+            <!-- <Host Name="PPRO" Version="[8.0,99.9]" /> -->
+            <!-- AfterEffects -->
+            <!-- <Host Name="AEFT" Version="[13.0,99.9]" /> -->
+            <!-- PRELUDE -->
+            <!-- <Host Name="PRLD" Version="[3.0,99.9]" />   -->
+            <!-- FLASH Pro -->
+            <!-- <Host Name="FLPR" Version="[14.0,99.9]" /> -->
+        </HostList>
+        <LocaleList>
+            <Locale Code="All"/>
+        </LocaleList>
+        <RequiredRuntimeList>
+            <RequiredRuntime Name="CSXS" Version="4.0"/>
+        </RequiredRuntimeList>
+    </ExecutionEnvironment>
+    <DispatchInfoList>
+        <Extension Id="cc.uberplugins.ubermapper">
+        <DispatchInfo>
+            <Resources>
+                <MainPath>./index.html</MainPath>
+                <ScriptPath>./host/main.jsx</ScriptPath>
+            </Resources>
+            <UI>
+                <Type>Panel</Type>
+                <Menu>UberMapper</Menu>
+                <Geometry>
+                    <Size>
+                        <Height>380</Height>
+                        <Width>320</Width>
+                    </Size>
+                    <MinSize>
+                        <Height>380</Height>
+                        <Width>220</Width>
+                    </MinSize>
+                    <MaxSize>
+                        <Height>9999</Height>
+                        <Width>9999</Width>
+                    </MaxSize>
+                </Geometry>
+                <Icons>
+                    <Icon Type="Normal">./img/normal.png</Icon>
+                    <!-- <Icon Type="RollOver">./img/iconRollover.png</Icon> -->
+                    <Icon Type="DarkNormal">./img/darknormal.png</Icon>
+                    <!-- <Icon Type="DarkRollOver">./img/iconDarkRollover.png</Icon> -->
+                    <!-- <Icon Type="Disabled">./img/iconDisabled.png</Icon> -->
+                </Icons>
+            </UI>
+        </DispatchInfo>
+        </Extension>
+    </DispatchInfoList>
+</ExtensionManifest>

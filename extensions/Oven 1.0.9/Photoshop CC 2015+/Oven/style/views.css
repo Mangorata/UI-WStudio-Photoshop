@@ -1,0 +1,36 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#switch_os_component {
+	float:left;
+	margin:12px 0 0 12px;
+}
+#output_density_ios {
+	float:right;
+	margin: 3px 12px 0 0;
+}
+#output_density_android {
+    float:right;
+    margin: 3px 12px 0 0;  
+}
+/* measures btn area */
+#settings .lxgutter {
+	margin-left:10px;
+}
+#settings .rxgutter {
+	margin-right:7px;
+}
+#settings .switchBtn {
+	float:left;
+	height:22px;
+}
+.selector {
+	float:right;
+	margin:0 12px 0 0;
+}
+.show {
+    display:block;
+}
+.hide {
+    display:none;
+}

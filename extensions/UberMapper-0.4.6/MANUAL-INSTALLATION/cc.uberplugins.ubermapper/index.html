@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link id="ppstyle" rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body onLoad="onLoaded()">
+    <div class="floor">
+        <input id="input_location" type="text" placeholder="Search">
+        <input id="input_location_submit" type="submit" value="">
+    </div>
+    
+    <div id="map_preview"></div>
+    <div id="map_work"></div>
+    
+    <div class="settings_pop unjump2">
+        <div class="floor">
+        <input id="checkbox_shape" type="checkbox" checked><label for="checkbox_shape">Generate map above the selected Shape layer</label>
+        </div><div class="floor">
+        <input id="checkbox_retina" type="checkbox"><label for="checkbox_retina">×2 Scale</label>
+        </div>
+        <div id="apply_settings">Apply</div>
+    </div>
+
+    <div class="info">
+        <span id="settings"></span>
+        <a href="#" class="version">v0.4.6</a>
+    </div>
+
+    <div class="floor fixed_bottom">
+        <input id="btn_update" type="button" value="Generate Map">
+        <div id="loader" class="loader loader--style3">
+            <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+                    <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite" />
+                </path>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+
+    <script src="./js/lib/CSInterface-4.2.0.js"></script>
+    <script src="./js/themeSwitcher.js"></script>
+
+    <script src="./js/lib/jquery-1.9.1.min.js"></script>
+    <script src="./js/main.js"></script>
+
+    <script>
+        var map_preview, autocomplete;
+
+        function initMap() {
+            var startOptions = {
+                zoom: 14,
+                center: {
+                    lat: 37.330736,
+                    lng: -121.894228
+                },
+                panControl: false,
+                zoomControl: true,
+                mapTypeControl: false,
+                scaleControl: false,
+                streetViewControl: false,
+                overviewMapControl: false,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            map_preview = new google.maps.Map(document.getElementById('map_preview'), startOptions);
+            map_work = new google.maps.Map(document.getElementById('map_work'), startOptions);
+
+            //        google.maps.event.addListener(map_preview, 'dragend', updateWorkMap );
+            //        google.maps.event.addListener(map_preview, 'bounds_changed', updateWorkMap );
+            google.maps.event.addListener(map_preview, 'center_changed', updateWorkMap);
+            google.maps.event.addListener(map_preview, 'zoom_changed', updateWorkMap);
+            //        google.maps.event.addListener(map_preview, 'resize', updateWorkMap );
+
+            function updateWorkMap() {
+                map_work.setCenter(map_preview.getCenter());
+                map_work.setZoom(map_preview.getZoom());
+            }
+
+            //        autocomplete = new google.maps.places.Autocomplete((input_location));
+            //            autocomplete.addListener('place_changed', showPlace);
+            
+            
+            
+            
+            var input777 = document.getElementById('input_location');
+            var searchBox = new google.maps.places.SearchBox(input777);
+            var markers = [];
+            
+            document.getElementById('input_location_submit').onclick = function () {
+                google.maps.event.trigger(input777, 'focus')
+                google.maps.event.trigger(input777, 'keydown', { keyCode: 13 });
+            };
+
+            searchBox.addListener('places_changed', function () {
+                var places = searchBox.getPlaces();
+
+                if (places.length == 0) {
+                    return;
+                }
+
+                // Clear out the old markers.
+                markers.forEach(function (marker) {
+                    marker.setMap(null);
+                });
+                markers = [];
+
+                // For each place, get the icon, name and location.
+                var bounds = new google.maps.LatLngBounds();
+                places.forEach(function (place) {
+                    var icon = {
+                        url: place.icon,
+                        size: new google.maps.Size(71, 71),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(17, 34),
+                        scaledSize: new google.maps.Size(25, 25)
+                    };
+
+                    // Create a marker for each place.
+                    markers.push(new google.maps.Marker({
+                        map: map_preview,
+                        icon: icon,
+                        title: place.name,
+                        position: place.geometry.location
+                    }));
+
+                    if (place.geometry.viewport) {
+                        // Only geocodes have viewport.
+                        bounds.union(place.geometry.viewport);
+                    } else {
+                        bounds.extend(place.geometry.location);
+                    }
+                });
+                map_preview.fitBounds(bounds);
+            });
+        }
+
+        function showPlace() {
+            var place = autocomplete.getPlace();
+            var lat = place.geometry.location.lat();
+            var lng = place.geometry.location.lng();
+
+            map_preview.setCenter({
+                lat: lat,
+                lng: lng
+            });
+            //        map_preview.setZoom(14);
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+{
+  "name": "griddify",
+  "private": "true",
+  "version": "1.1.0",
+  "description": "A tiny photoshop panel to make guides and grids",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --watch --config ./build-tools/webpack-dev.js --colors --progress",
+    "prepublish": "webpack --config ./build-tools/webpack-production.js --colors --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pixana/griddify.git"
+  },
+  "keywords": [
+    "photoshop"
+  ],
+  "author": "Aria Minaei",
+  "license": "GPL V3",
+  "bugs": {
+    "url": "https://github.com/pixana/griddify/issues"
+  },
+  "dependencies": {
+    "photoshopjs-core": "~0.1.0-dev.1",
+    "semver": "^5.1.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.1.2",
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.10.0",
+    "css-loader": "^0.23.0",
+    "file-loader": "^0.8.5",
+    "json-loader": "^0.5.4",
+    "postcss-short": "^1.4.0",
+    "poststylus": "^0.2.2",
+    "style-loader": "^0.13.0",
+    "stylus-loader": "^1.4.2",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.9",
+    "webpack-error-notification": "^0.1.5"
+  }
+}
